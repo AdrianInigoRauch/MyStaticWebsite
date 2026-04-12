@@ -19,12 +19,17 @@ This document defines the operating rules for this personal website project.
 - Keep pages lightweight and fast.
 - Prefer semantic HTML and minimal JavaScript.
 - Keep external dependencies minimal; avoid build-only toolchains unless explicitly requested.
+- Prefer self-hosted assets under `wwwroot/` over third-party CDNs or remote runtime dependencies.
+- Treat GDPR/privacy compliance as a default requirement for frontend integrations.
+- Do not add third-party scripts, stylesheets, fonts, trackers, embeds, or other browser-fetched assets unless explicitly approved and legally reviewed.
 - Preserve existing URL/file structure unless a deliberate migration is approved.
 
 ## Content & Legal
 
 - Keep personal profile/contact content accurate and up to date.
 - Ensure legal/imprint content in `wwwroot/LegalNotice.html` remains present and accessible.
+- When introducing vendor libraries, store them locally in the repository and serve them from the same origin whenever feasible.
+- Flag any change that causes the browser to contact third-party services as a legal/privacy review item.
 
 ## Deployment Expectation
 
