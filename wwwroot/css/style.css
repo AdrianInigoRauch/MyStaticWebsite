@@ -1,34 +1,158 @@
 
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #ECEFF4;
-    color: #2F435B
+/*
+ * Load after Bootstrap. Keep vendor files unchanged so they can be upgraded.
+ * Bootstrap compiles some colors into component rules, so root variables alone
+ * do not theme everything. Review these component overrides after upgrades.
+ */
+:root,
+[data-bs-theme="light"] {
+    --site-ink: #080706;
+    --site-paper: #EFEFEF;
+    --site-gold: #D1B280;
+    --site-silver: #594D46;
+    --site-gold-hover: color-mix(in srgb, var(--site-gold), black 10%);
+    --site-gold-active: color-mix(in srgb, var(--site-gold), black 15%);
+    --site-silver-hover: color-mix(in srgb, var(--site-silver), black 10%);
+    --site-silver-active: color-mix(in srgb, var(--site-silver), black 15%);
+
+    --bs-body-color: var(--site-ink);
+    --bs-body-color-rgb: 8, 7, 6;
+    --bs-body-bg: var(--site-paper);
+    --bs-body-bg-rgb: 239, 239, 239;
+    --bs-emphasis-color: var(--site-ink);
+    --bs-emphasis-color-rgb: 8, 7, 6;
+    --bs-heading-color: var(--site-ink);
+    --bs-dark: var(--site-ink);
+    --bs-dark-rgb: 8, 7, 6;
+    --bs-light: var(--site-paper);
+    --bs-light-rgb: 239, 239, 239;
+
+    --bs-primary: var(--site-gold);
+    --bs-primary-rgb: 209, 178, 128;
+    --bs-secondary: var(--site-silver);
+    --bs-secondary-rgb: 89, 77, 70;
+    --bs-primary-text-emphasis: var(--site-ink);
+    --bs-secondary-text-emphasis: var(--site-silver);
+    --bs-primary-bg-subtle: color-mix(in srgb, var(--site-gold) 20%, var(--site-paper));
+    --bs-secondary-bg-subtle: color-mix(in srgb, var(--site-silver) 10%, var(--site-paper));
+    --bs-primary-border-subtle: color-mix(in srgb, var(--site-gold) 60%, var(--site-paper));
+    --bs-secondary-border-subtle: color-mix(in srgb, var(--site-silver) 40%, var(--site-paper));
+
+    --bs-secondary-color: var(--site-silver);
+    --bs-secondary-color-rgb: 89, 77, 70;
+    --bs-tertiary-color: var(--site-silver);
+    --bs-tertiary-color-rgb: 89, 77, 70;
+    /* Silver mixed into Paper at 6% and 3%, with matching RGB values. */
+    --bs-secondary-bg: #E6E5E5;
+    --bs-secondary-bg-rgb: 230, 229, 229;
+    --bs-tertiary-bg: #EBEAEA;
+    --bs-tertiary-bg-rgb: 235, 234, 234;
+    --bs-border-color: var(--bs-secondary-border-subtle);
+    --bs-border-color-translucent: rgba(89, 77, 70, 0.25);
+
+    --bs-link-color: var(--site-ink);
+    --bs-link-color-rgb: 8, 7, 6;
+    --bs-link-hover-color: var(--site-silver);
+    --bs-link-hover-color-rgb: 89, 77, 70;
+    --bs-focus-ring-color: rgba(8, 7, 6, 0.6);
 }
-a:link {
-    color: #416C6B;
+
+/* Fills and foregrounds must be paired explicitly in compiled Bootstrap. */
+.btn-primary,
+.btn-secondary,
+.btn-outline-primary,
+.btn-outline-secondary {
+    --bs-btn-focus-shadow-rgb: 8, 7, 6;
+    --bs-btn-focus-box-shadow: 0 0 0 0.25rem rgba(var(--bs-btn-focus-shadow-rgb), 0.6);
 }
-a:visited {
-    color: #416C6B;
-    font-style: oblique;
+
+.btn-primary {
+    --bs-btn-color: var(--site-ink);
+    --bs-btn-bg: var(--site-gold);
+    --bs-btn-border-color: var(--site-gold);
+    --bs-btn-hover-color: var(--site-ink);
+    --bs-btn-hover-bg: var(--site-gold-hover);
+    --bs-btn-hover-border-color: var(--site-gold-hover);
+    --bs-btn-active-color: var(--site-ink);
+    --bs-btn-active-bg: var(--site-gold-active);
+    --bs-btn-active-border-color: var(--site-gold-active);
+    --bs-btn-disabled-color: var(--site-ink);
+    --bs-btn-disabled-bg: var(--site-gold);
+    --bs-btn-disabled-border-color: var(--site-gold);
 }
-a:focus {
-    color: #416C6B;
-    font-weight: bold;
+
+.btn-secondary {
+    --bs-btn-color: var(--site-paper);
+    --bs-btn-bg: var(--site-silver);
+    --bs-btn-border-color: var(--site-silver);
+    --bs-btn-hover-color: var(--site-paper);
+    --bs-btn-hover-bg: var(--site-silver-hover);
+    --bs-btn-hover-border-color: var(--site-silver-hover);
+    --bs-btn-active-color: var(--site-paper);
+    --bs-btn-active-bg: var(--site-silver-active);
+    --bs-btn-active-border-color: var(--site-silver-active);
+    --bs-btn-disabled-color: var(--site-paper);
+    --bs-btn-disabled-bg: var(--site-silver);
+    --bs-btn-disabled-border-color: var(--site-silver);
 }
-a:hover {
-    color: #416C6B;
-    font-weight: bold;
+
+.btn-outline-primary {
+    --bs-btn-color: var(--site-ink);
+    --bs-btn-border-color: var(--site-gold);
+    --bs-btn-hover-color: var(--site-ink);
+    --bs-btn-hover-bg: var(--site-gold);
+    --bs-btn-hover-border-color: var(--site-gold);
+    --bs-btn-active-color: var(--site-ink);
+    --bs-btn-active-bg: var(--site-gold-active);
+    --bs-btn-active-border-color: var(--site-gold-active);
+    --bs-btn-disabled-color: var(--site-ink);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--site-gold);
 }
-a:active {
-    color: #416C6B;
-    font-weight: bold;
+
+.btn-outline-secondary {
+    --bs-btn-color: var(--site-silver);
+    --bs-btn-border-color: var(--site-silver);
+    --bs-btn-hover-color: var(--site-paper);
+    --bs-btn-hover-bg: var(--site-silver);
+    --bs-btn-hover-border-color: var(--site-silver);
+    --bs-btn-active-color: var(--site-paper);
+    --bs-btn-active-bg: var(--site-silver-active);
+    --bs-btn-active-border-color: var(--site-silver-active);
+    --bs-btn-disabled-color: var(--site-silver);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: var(--site-silver);
 }
-table, th, td {
-    border: 1px solid #6C7A89;
+
+.navbar {
+    --bs-navbar-color: var(--site-ink);
+    --bs-navbar-hover-color: var(--site-silver);
+    --bs-navbar-active-color: var(--site-ink);
 }
-h1, h2, h3{
-    color: #2F435B
+
+.dropdown-menu {
+    --bs-dropdown-link-active-color: var(--site-ink);
+    --bs-dropdown-link-active-bg: var(--site-gold);
+    --bs-dropdown-header-color: var(--site-silver);
 }
-hr {
-    color: #7E3D29;
+
+/* Match Bootstrap's utility specificity and retain its opacity controls. */
+.text-bg-primary {
+    color: var(--site-ink) !important;
+}
+
+.text-bg-secondary {
+    color: var(--site-paper) !important;
+}
+
+.link-primary:focus,
+.link-primary:hover {
+    color: rgba(var(--bs-secondary-rgb), var(--bs-link-opacity, 1)) !important;
+    text-decoration-color: rgba(var(--bs-secondary-rgb), var(--bs-link-underline-opacity, 1)) !important;
+}
+
+.link-secondary:focus,
+.link-secondary:hover {
+    color: rgba(var(--bs-body-color-rgb), var(--bs-link-opacity, 1)) !important;
+    text-decoration-color: rgba(var(--bs-body-color-rgb), var(--bs-link-underline-opacity, 1)) !important;
 }
